@@ -1,0 +1,27 @@
+# Description: filet de securite via C_Timer.NewTicker au lieu d'OnUpdate (conception VALIDE)
+# Expect: pass
+@@ edit Core.lua
+<<<<
+local poll = CreateFrame("Frame")
+poll:Hide()
+local acc = 0
+poll:SetScript("OnUpdate", function(self, elapsed)
+  acc = acc + elapsed
+  if acc < 0.2 then return end
+  acc = 0
+  if not anyBoundKeyHeld() then WT.SetActive(false) end
+end)
+local function armNet() acc = 0; poll:Show() end
+local function disarmNet() poll:Hide() end
+====
+local ticker
+local function disarmNet()
+  if ticker then ticker:Cancel(); ticker = nil end
+end
+local function armNet()
+  disarmNet()
+  ticker = C_Timer.NewTicker(0.1, function()
+    if not anyBoundKeyHeld() then WT.SetActive(false) end
+  end)
+end
+>>>>

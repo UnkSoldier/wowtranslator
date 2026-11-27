@@ -1,0 +1,10 @@
+# Description: issecretvalue appele sans pcall (AllowedWhenUntainted : peut lever une erreur)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  local ok, r = pcall(issecretvalue, v)
+  if not ok then return true end
+  return r and true or false
+====
+  return issecretvalue(v) and true or false
+>>>>

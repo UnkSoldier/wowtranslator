@@ -1,0 +1,7 @@
+# Description: filet de securite jamais arme
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    if active then armNet() end
+====
+>>>>

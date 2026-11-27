@@ -1,0 +1,13 @@
+# Description: 'down' n'arme le filet que sur la transition inactif -> actif (rate le cas deja actif)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  if keystate == "down" then
+    WT.SetActive(true)
+    if active then armNet() end
+====
+  if keystate == "down" then
+    local was = active
+    WT.SetActive(true)
+    if active and not was then armNet() end
+>>>>

@@ -1,0 +1,8 @@
+# Description: filet qui ne sonde que la PREMIERE touche liee (coupe si on tient la seconde)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  local keys = { GetBindingKey("WOWTRANSLATOR_HOLD") }
+====
+  local keys = { (GetBindingKey("WOWTRANSLATOR_HOLD")) }
+>>>>

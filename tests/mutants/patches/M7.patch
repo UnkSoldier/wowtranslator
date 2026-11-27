@@ -1,0 +1,5 @@
+# Description: goto dans Core.lua (accepte par LuaJIT, refuse par le Lua 5.1 du jeu)
+# Expect: fail
+@@ append Core.lua
+do goto skip end
+::skip::

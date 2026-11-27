@@ -1,0 +1,9 @@
+# Description: Apply/Restore appeles sans pcall (un module en erreur bloque les autres)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    local ok, err = pcall(f)
+    if not ok then geterrorhandler()(err) end
+====
+    f()
+>>>>

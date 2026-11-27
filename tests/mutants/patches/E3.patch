@@ -1,0 +1,8 @@
+# Description: modificateurs non retires (IsKeyDown("SHIFT-F6"))
+# Expect: fail
+@@ edit Core.lua
+<<<<
+local function baseKey(k) return k:match("^.*%-(.+)$") or k end
+====
+local function baseKey(k) return k end
+>>>>

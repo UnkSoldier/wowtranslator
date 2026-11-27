@@ -1,0 +1,20 @@
+# Description: le hook memorise un texte secret et Restore le reecrit (contraire a la regle 2)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    if isSecret(text) then st.original, st.applied = nil, nil; return end
+====
+    if isSecret(text) then st.original, st.applied = text, nil; return end
+>>>>
+@@ edit Core.lua
+<<<<
+      if st.applied and st.original ~= nil then
+        local cur = fs:GetText()
+        if not isSecret(cur) and cur == st.applied then set(st.original) end
+      end
+====
+      if st.original ~= nil and (st.applied or isSecret(st.original)) then
+        local cur = fs:GetText()
+        if isSecret(st.original) or (not isSecret(cur) and cur == st.applied) then set(st.original) end
+      end
+>>>>

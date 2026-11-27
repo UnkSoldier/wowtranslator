@@ -1,0 +1,22 @@
+# Description: module de zone hooke sur la globale ZoneText_OnEvent (liee par reference en jeu : inoperant)
+# Expect: fail
+@@ replace-file Modules/ZoneText.lua
+local _, WT = ...
+local mini = WT._ref.HookFontString(MinimapZoneText)
+local orig = {}
+local function translateZone()
+  for _, fs in ipairs({ ZoneTextString, SubZoneTextString }) do
+    local t = fs:GetText()
+    local r = WT.Translate(t)
+    if r then orig[fs] = t; fs:SetText(r) end
+  end
+end
+hooksecurefunc("ZoneText_OnEvent", function() if WT.IsActive() then translateZone() end end)
+WT.RegisterModule("ZoneText", {
+  Apply = function() mini.Apply(); translateZone() end,
+  Restore = function()
+    mini.Restore()
+    for fs, t in pairs(orig) do fs:SetText(t) end
+    orig = {}
+  end,
+})

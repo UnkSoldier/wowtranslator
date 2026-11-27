@@ -1,0 +1,7 @@
+# Description: pas de garde anti-recursion dans le hook SetText
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    if st.busy then return end
+====
+>>>>

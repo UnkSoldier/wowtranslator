@@ -1,0 +1,8 @@
+# Description: erreur de pcall(issecretvalue) traitee comme NON secret
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  if not ok then return true end
+====
+  if not ok then return false end
+>>>>

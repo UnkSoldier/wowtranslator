@@ -1,0 +1,5 @@
+<Bindings>
+  <Binding name="WOWTRANSLATOR_HOLD" runOnUp="true" category="BINDING_HEADER_WOWTRANSLATOR">
+    WoWTranslator_OnHoldKey(keystate)
+  </Binding>
+</Bindings>

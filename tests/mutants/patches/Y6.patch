@@ -1,0 +1,8 @@
+# Description: issecretvalue absent traite comme "secret" (plus aucune traduction)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  if not issecretvalue then return false end
+====
+  if not issecretvalue then return true end
+>>>>

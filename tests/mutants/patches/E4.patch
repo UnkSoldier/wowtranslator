@@ -1,0 +1,9 @@
+# Description: Translate n'appelle jamais issecretvalue
+# Expect: fail
+@@ edit Core.lua
+<<<<
+function WT.Translate(text)
+  if isSecret(text) then return nil end
+====
+function WT.Translate(text)
+>>>>

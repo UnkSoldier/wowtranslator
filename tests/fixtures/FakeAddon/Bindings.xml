@@ -1,0 +1,11 @@
+<Bindings>
+  <!-- <Binding name="COMMENTED_OUT">error("ne doit pas etre charge")</Binding> -->
+  <Binding name="FAKEADDON_HOLD" runOnUp="true" category="BINDING_HEADER_FAKEADDON">
+    FakeAddon_NS.keys = FakeAddon_NS.keys or {}
+    table.insert(FakeAddon_NS.keys, keystate)
+  </Binding>
+  <Binding name="FAKEADDON_TAP" category="BINDING_HEADER_FAKEADDON">
+    FakeAddon_NS.label = &quot;ok&quot;
+    FakeAddon_NS.taps = (FakeAddon_NS.taps or 0) + 1
+  </Binding>
+</Bindings>

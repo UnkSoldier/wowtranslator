@@ -1,0 +1,23 @@
+# Description: Translate lit le dictionnaire par rawget AVANT issecretvalue
+# Expect: fail
+@@ edit Core.lua
+<<<<
+function WT.Translate(text)
+  if isSecret(text) then return nil end
+  if type(text) ~= "string" or text == "" then return nil end
+  local t = targetLocale()
+  if not t then return nil end
+  local d = WT.data[(t == "frFR" and "enUS" or "frFR") .. "_" .. t]
+  return d and d[text] or nil
+end
+====
+function WT.Translate(text)
+  if type(text) ~= "string" or text == "" then return nil end
+  local t = targetLocale()
+  if not t then return nil end
+  local d = WT.data[(t == "frFR" and "enUS" or "frFR") .. "_" .. t]
+  local r = d and rawget(d, text) or nil
+  if isSecret(text) then return nil end
+  return r
+end
+>>>>

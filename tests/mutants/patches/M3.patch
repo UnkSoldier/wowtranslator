@@ -1,0 +1,8 @@
+# Description: suffixe de niveau reconnu au mauvais format " |c...(a-b)|r" (espace hors du code couleur)
+# Expect: fail
+@@ edit Modules/WorldMap.lua
+<<<<
+"^(.-)(|c%x%x%x%x%x%x%x%x %(.-%)|r)$"
+====
+"^(.-)( |c%x%x%x%x%x%x%x%x%(.-%)|r)$"
+>>>>

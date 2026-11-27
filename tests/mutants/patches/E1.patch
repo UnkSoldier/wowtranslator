@@ -1,0 +1,9 @@
+# Description: pas de filet de securite (perte de focus jamais rattrapee)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  if not anyBoundKeyHeld() then WT.SetActive(false) end
+end)
+====
+end)
+>>>>

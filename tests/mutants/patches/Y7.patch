@@ -1,0 +1,7 @@
+# Description: erreur de module avalee (pcall sans geterrorhandler)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    if not ok then geterrorhandler()(err) end
+====
+>>>>

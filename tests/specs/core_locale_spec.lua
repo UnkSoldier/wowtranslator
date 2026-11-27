@@ -1,0 +1,30 @@
+-- Langue cible = inverse de GetLocale().
+return function(T)
+  T.test("client enUS -> cible frFR", function()
+    local m = T.boot({ locale = "enUS" })
+    T.eq(m.WT.Translate("Stormwind City"), "Hurlevent")
+    T.isNil(m.WT.Translate("Hurlevent"), "le francais ne doit pas etre traduit sur un client enUS")
+  end)
+
+  T.test("client frFR -> cible enUS", function()
+    local m = T.boot({ locale = "frFR", zone = "Hurlevent" })
+    T.eq(m.WT.Translate("Hurlevent"), "Stormwind City")
+    T.eq(m.WT.Translate("Les Mortemines"), "The Deadmines")
+    T.eq(m.WT.Translate("Forêt d'Elwynn"), "Elwynn Forest")
+    T.isNil(m.WT.Translate("Stormwind City"), "l'anglais ne doit pas etre traduit sur un client frFR")
+  end)
+
+  T.test("client enGB (variante anglaise) traite comme enUS", function()
+    local m = T.boot({ locale = "enGB" })
+    T.eq(m.WT.Translate("Ironforge"), "Forgefer")
+  end)
+
+  T.test("locale non geree (deDE) : aucune erreur au chargement ni a l'appui", function()
+    local m = T.boot({ locale = "deDE", zone = "Sturmwind" })
+    T.noError(function() m.WT.Translate("Sturmwind") end)
+    m.KeyDown()
+    m.KeyUp()
+    T.noLuaErrors(m)
+    T.eq(m.env.ZoneTextString:GetText(), "Sturmwind", "texte inchange")
+  end)
+end

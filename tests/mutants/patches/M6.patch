@@ -1,0 +1,31 @@
+# Description: config ecrite dans les SavedVariables seulement a PLAYER_LOGOUT (conception VALIDE)
+# Expect: pass
+@@ replace-file Config.lua
+local addonName, WT = ...
+WT._ref.db = {}
+local f = CreateFrame("Frame")
+f:RegisterEvent("ADDON_LOADED")
+f:RegisterEvent("PLAYER_LOGOUT")
+f:SetScript("OnEvent", function(self, event, name)
+  if event == "ADDON_LOADED" then
+    if name ~= addonName then return end
+    local saved = WoWTranslatorDB
+    local lang = type(saved) == "table" and saved.lang or nil
+    if lang ~= "enUS" and lang ~= "frFR" then lang = nil end
+    WT._ref.db = { lang = lang }
+  elseif event == "PLAYER_LOGOUT" then
+    WoWTranslatorDB = { lang = WT._ref.db.lang }
+  end
+end)
+SLASH_WOWTRANSLATOR1 = "/wt"
+SlashCmdList.WOWTRANSLATOR = function(msg)
+  local cmd, arg = (msg or ""):match("^(%S*)%s*(.-)$")
+  if cmd == "lang" then
+    if arg == "enUS" or arg == "frFR" then WT._ref.db.lang = arg; print("WoWTranslator: " .. arg)
+    else print("Usage: /wt lang enUS|frFR") end
+  elseif cmd == "status" then
+    print("WoWTranslator: cible " .. tostring(WT._ref.targetLocale()))
+  else
+    print("/wt lang enUS|frFR, /wt status")
+  end
+end

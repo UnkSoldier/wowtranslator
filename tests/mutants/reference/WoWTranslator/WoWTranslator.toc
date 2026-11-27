@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: WoWTranslator (reference de test)
+## Notes: Oracle de test uniquement, ne pas installer.
+## SavedVariables: WoWTranslatorDB
+Core.lua
+Data\Zones_enUS_frFR.lua
+Data\Zones_frFR_enUS.lua
+Config.lua
+Modules\ZoneText.lua
+Modules\WorldMap.lua

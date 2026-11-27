@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: FakeAddon (fixture des tests du mock)
+## SavedVariables: FakeAddonDB
+First.lua
+Sub\Second.lua
+OnlyFrench.lua [AllowLoadTextLocale frFR]

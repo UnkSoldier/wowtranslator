@@ -1,0 +1,10 @@
+# Description: carte accrochee seulement sur ADDON_LOADED "Blizzard_WorldMap" (rate la carte prechargee)
+# Expect: fail
+@@ edit Modules/WorldMap.lua
+<<<<
+setup()
+local f = CreateFrame("Frame")
+====
+-- setup()
+local f = CreateFrame("Frame")
+>>>>

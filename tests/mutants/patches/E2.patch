@@ -1,0 +1,21 @@
+# Description: sondage IsKeyDown permanent, meme hors appui
+# Expect: fail
+@@ edit Core.lua
+<<<<
+local poll = CreateFrame("Frame")
+poll:Hide()
+====
+local poll = CreateFrame("Frame")
+>>>>
+@@ edit Core.lua
+<<<<
+  if not anyBoundKeyHeld() then WT.SetActive(false) end
+====
+  if not anyBoundKeyHeld() and active then WT.SetActive(false) end
+>>>>
+@@ edit Core.lua
+<<<<
+local function disarmNet() poll:Hide() end
+====
+local function disarmNet() end
+>>>>

@@ -1,0 +1,8 @@
+# Description: filet arme par tout SetActive(true), pas seulement par la touche (contraire a PLAN.md T2)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+  if not on then disarmNet() end
+====
+  if on then armNet() else disarmNet() end
+>>>>

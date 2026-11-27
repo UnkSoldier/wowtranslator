@@ -1,0 +1,5 @@
+# Description: ZoneTextFrame:SetScript("OnEvent", ...) remplace le script Blizzard (taint)
+# Expect: fail
+@@ append Modules/ZoneText.lua
+local o = ZoneTextFrame:GetScript("OnEvent")
+ZoneTextFrame:SetScript("OnEvent", function(...) return o(...) end)

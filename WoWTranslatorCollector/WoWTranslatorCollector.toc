@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: WoWTranslator Collector (dev tool)
+## Title-frFR: WoWTranslator Collector (outil de développement)
+## Notes: Development tool, collects zone and map names in the current client language. Do not distribute.
+## Notes-frFR: Outil de développement : collecte les noms de zones et de cartes dans la langue du client. Ne pas distribuer.
+## Version: 0.2.0
+## SavedVariables: WoWTranslatorCollectorDB
+
+Collector.lua

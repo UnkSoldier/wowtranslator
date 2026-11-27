@@ -1,0 +1,15 @@
+## Interface: 16001
+## Title: WoWTranslator
+## Notes: Hold a key to show zone and place names in the other language.
+## Notes-frFR: Maintenez une touche pour voir les noms de lieux dans l'autre langue.
+## Version: 0.1.0
+## SavedVariables: WoWTranslatorDB
+
+Core.lua
+Modules\ZoneText.lua
+Modules\WorldMap.lua
+Config.lua
+
+# Fichiers générés (tools/build_zone_data.py --install, tâche T3)
+Data\Zones_enUS_frFR.lua
+Data\Zones_frFR_enUS.lua

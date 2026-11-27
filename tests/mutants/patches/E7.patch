@@ -1,0 +1,8 @@
+# Description: restauration d'un original perime (le texte pose pendant l'appui n'est pas memorise)
+# Expect: fail
+@@ edit Core.lua
+<<<<
+    st.original, st.applied = text, nil
+====
+    st.applied = st.applied
+>>>>
